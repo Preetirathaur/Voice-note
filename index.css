@@ -1,0 +1,1044 @@
+/* By preeti */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+}
+
+body {
+    position: relative;
+    background: #eff5fe;
+    width: 100%;
+    height: 100vh !important;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+body.active {
+    transition: 0.5s;
+    background: #2b2b2b;
+}
+
+
+/* ---------------------------------------------------------- */
+div.alertBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 20px;
+    left: 28%;
+    transform: translate(-50%, -60px);
+    transition: transform ease-in-out .2s;
+    height: 36px;
+    width: 100px;
+    border-radius: 4px;
+    color: white;
+    background: rgb(30, 36, 40);
+    padding: 10px;
+    font-size: small;
+    font-weight: 600;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12), 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    z-index: 11;
+}
+
+div.alertBox.active {
+    color: #2b2b2b;
+    background: rgb(30, 215, 96);
+}
+
+/* ---------------------------------------------------------- */
+div.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+div.header div.heading-container {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    transition: all 1s ease-in-out;
+}
+
+div.header div.heading-container img {
+    height: 40px;
+    transition: all 1s ease-in-out;
+}
+
+div.header div.light-and-dark-mode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+#toggle {
+    margin-left: 15px;
+    position: relative;
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
+    transition: 0.5s;
+    cursor: pointer;
+    background: #fff;
+    box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1),
+        inset 0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 -4px 4px rgba(0, 0, 0, 0.05);
+}
+
+#toggle.active {
+    background: #222;
+    box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1),
+        inset 0 8px 8px rgba(0, 0, 0, 0.1),
+        inset 0 -4px -4px rgba(0, 0, 0, 0.1);
+}
+
+#toggle .indicator {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transform: scale(.7);
+    background: linear-gradient(to bottom, #444, #222);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
+        inset 0 4px 4px rgba(255, 255, 255, 0.2),
+        inset 0 -4px 4px rgba(255, 255, 255, 0.2);
+    transition: 0.5s;
+}
+
+#toggle.active .indicator {
+    transition: 0.5s;
+    left: 20px;
+    background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
+        inset 0 4px 4px rgba(255, 255, 255, 1),
+        inset 0 -4px 4px rgba(255, 255, 255, 1);
+}
+
+#mode-icon {
+    background-image: url(../images/sun.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transition: 0.5s;
+}
+
+#mode-icon.active {
+    transition: 0.5s;
+    background-image: url(../images/moon.svg);
+}
+
+.share-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+}
+
+.share-btn-container>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    background: rgba(64, 134, 244, 0.4);
+    border-radius: 4px;
+    height: 36px;
+    width: 34%;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.share-btn-container>button.active {
+    transition: 0.5s;
+    background-color: rgb(30, 215, 96);
+}
+
+.share-btn-container>button:hover {
+    box-shadow: -3px 3px 0px 0px #2b2b2b;
+    transition: 0.5s;
+}
+
+.share-btn-container>button.active:hover {
+    box-shadow: -3px 3px 0px 0px #3d84f3;
+    transition: 0.5s;
+}
+
+.share-btn-container>button>img {
+    margin-left: 5px;
+    height: 17px;
+    width: 17px;
+    transition: transform ease-in 0.3s;
+}
+
+
+/* ---------------------------------------------------------------- */
+div.main {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48%;
+    padding: 30px;
+    margin: 10px auto 5px 20px;
+    background: #f8f8f8;
+    border-radius: 30px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 5;
+    transition: 0.5s;
+}
+
+div.main.active {
+    background: #2b2b2b;
+    transition: 0.5s;
+}
+
+
+/* ---------------------------------------------------------------- */
+div.main button#draggable-btn {
+    position: absolute;
+    top: 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: rgba(95, 98, 103, 0.3);
+    width: 56px;
+    height: 5px;
+    cursor: grabbing;
+    transition: 0.5s;
+}
+
+div.main.active button#draggable-btn {
+    background: rgba(95, 98, 103, 0.6);
+    transition: 0.5s;
+}
+
+
+/* ---------------------------------------------------------------- */
+.content {
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px dashed #0288d147;
+    background-color: #f8f8f8;
+    transition: 0.5s;
+}
+
+.content.active {
+    transition: 0.5s;
+    background-color: #2b2b2b;
+}
+
+.content .section-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .section-1 #languageSelect {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    height: 40px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 5px;
+    color: #5f6368;
+    background: #f8f8f8;
+    border-top: 2px solid rgba(64, 134, 244, 0.2);
+    transition: 0.5s;
+}
+
+.content .section-1 #languageSelect.active {
+    transition: 0.5s;
+    border-top: 2px solid rgb(30, 215, 96);
+    color: rgba(30, 215, 96, 0.8);
+    background: #2b2b2b;
+}
+
+.speechButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    background: inherit;
+    box-shadow: 6px 2px 16px 0px rgba(136, 165, 191, 0.48), -6px -2px 16px 0px rgba(255, 255, 255, 0.8);
+    transition: 0.5s;
+}
+
+.speechButtons.active {
+    transition: 0.5s;
+    box-shadow: -7px -5px 10px #3a3a3a,
+        7px 5px 10px #303030;
+}
+
+#speech-speakBtn,
+#speech-pauseBtn,
+#speech-playBtn,
+#speech-stopBtn {
+    border: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+#speech-speakBtn,
+#speech-pauseBtn,
+#speech-playBtn {
+    border-right: 2px solid rgb(220, 220, 220);
+    transition: 0.5s;
+}
+
+#speech-speakBtn.active,
+#speech-pauseBtn.active,
+#speech-playBtn.active {
+    border-right: 2px solid #353535;
+    transition: 0.5s;
+}
+
+#speech-speakBtn:active,
+#speech-pauseBtn:active,
+#speech-playBtn:active,
+#speech-stopBtn:active {
+    background: rgba(43, 43, 43, 0.5);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+#speech-speakBtn.active:active,
+#speech-pauseBtn.active:active,
+#speech-playBtn.active:active,
+#speech-stopBtn.active:active {
+    background: rgba(248, 248, 248, 0.5);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.speechButtons button img {
+    width: 26px;
+    height: 26px;
+}
+
+
+/* ------------------------------------------------------- */
+.content .section-2 {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    background: #eff5fe;
+    border: 2px solid rgba(64, 134, 244, 0.5);
+    border-radius: 10px;
+    padding: 30px 10px 10px 10px;
+    transition: 0.5s;
+}
+
+.content .section-2.active {
+    transition: 0.5s;
+    border: 2px solid rgb(30, 215, 96);
+    background: rgba(46, 46, 46, 1);
+}
+
+.content .section-2 p#placeholder_p {
+    position: absolute;
+    top: 33px;
+    left: 12px;
+    color: #757575;
+    font-size: small;
+    transition: 0.5s;
+}
+
+.content .section-2.active p#placeholder_p {
+    color: rgba(30, 215, 96, 0.8);
+    transition: 0.5s;
+}
+
+.content .section-2 p#placeholder_p::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #eff5fe;
+    border-left: 1px solid #757575;
+    animation: 3.8s animate infinite steps(14);
+    transition: 0.5s;
+}
+
+.content .section-2.active p#placeholder_p::before {
+    background: rgba(46, 46, 46, 1);
+    border-left: 1px solid rgba(30, 215, 96, 0.8);
+    transition: 0.5s;
+}
+
+@keyframes animate {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: 100px;
+    }
+}
+
+
+.content .section-2 textarea {
+    background: inherit;
+    color: #5f6368;
+    resize: none;
+    outline: none;
+    border: 2px solid transparent;
+    width: 100%;
+    height: 140px;
+}
+
+.content .section-2 textarea.active {
+    color: rgba(30, 215, 96, 0.8);
+}
+
+.content .section-2 textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.content .section-2 #textCopyBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 26px;
+    width: 26px;
+    padding: 4px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.content .section-2 #textCopyBtn:hover {
+    transition: 0.5s;
+    background: rgba(138, 138, 138, 0.3);
+}
+
+.content .section-2 #textCopyBtn:active {
+    transform: rotate(-10deg);
+    transition: transform ease-in .2s;
+    background: rgba(138, 138, 138, 0.15);
+}
+
+
+/* -------------------------------------------------------- */
+.content .section-3 {
+    width: 15%;
+    border: none;
+    background: rgba(255, 0, 0, 1);
+    border-radius: 40px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .section-3 button {
+    border: none;
+    outline: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.content .section-3 button#rec-startBtn {
+    background: #f8f8f8;
+    box-shadow: 0px 0px 0px 1px #f8f8f8, 0px 8px 17px 2px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+.content .section-3 button#rec-stopBtn {
+    background: rgba(255, 0, 0, 1);
+}
+
+.content .section-3 button:active {
+    transition: 0.5s;
+    background-color: #dadada !important;
+}
+
+.content .section-3 button img {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* -------------------------------------------------------- */
+.section-4 .div-1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    background: #f8f8f8;
+    border: 1px solid rgba(64, 134, 244, 0.2);
+    transition: 0.5s;
+}
+
+.section-4 .div-1.active {
+    transition: 0.5s;
+    background: rgba(46, 46, 46, 1);
+    /* border: 1px solid rgba(30, 215, 96, 0.8); */
+    border: 1px solid transparent;
+}
+
+.section-4 .div-1 div#inp-div,
+.section-4 .div-1 div#select-div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.section-4 .div-1 div#inp-div {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    justify-content: flex-end;
+    width: 70%;
+}
+
+.section-4 .div-1.active div#inp-div {
+    box-shadow: inset 0px 2px 2px rgba(48, 48, 48, 1), inset 3px -3px 3px rgba(50, 50, 50, 1);
+    transition: 0.5s;
+}
+
+.section-4 .div-1 div#select-div {
+    width: 30%;
+    justify-content: center;
+    background: rgba(64, 134, 244, 0.2);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    transition: 0.5s;
+}
+
+.section-4 .div-1.active div#select-div {
+    transition: 0.5s;
+    background: rgba(30, 215, 96, 0.8);
+}
+
+.section-4 .div-1 div#inp-div>input,
+.section-4 .div-1 div#select-div>select {
+    border: none;
+    outline: none;
+    background: transparent;
+    height: 76%;
+}
+
+.section-4 .div-1 div#inp-div>input {
+    transition: 0.5s;
+    color: #5f6368;
+    width: 94%;
+}
+
+.section-4 .div-1 div#inp-div>input.active {
+    transition: 0.5s;
+    color: rgba(30, 215, 96, 0.7);
+}
+
+.section-4 .div-1 div#select-div>select {
+    color: rgba(0, 0, 0, 0.8);
+    letter-spacing: .08em;
+    cursor: pointer;
+    width: 80%;
+}
+
+.section-4 .div-1 div#select-div>select>option {
+    background: rgba(64, 134, 244, 0.2);
+}
+
+.section-4 .div-1 div#select-div>select.active>option {
+    background: rgba(30, 215, 96, 0.8);
+}
+
+.section-4 .div-2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    width: 100%;
+    height: 38px;
+}
+
+.section-4 .div-2>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26%;
+    height: 100%;
+    cursor: pointer;
+    font-weight: normal;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: #2b2b2b;
+    background: rgba(64, 134, 244, 0.3);
+    transition: 0.5s;
+}
+
+.section-4 .div-2>button:hover {
+    transition: 0.5s;
+    background: rgba(64, 134, 244, 0.5);
+}
+
+.section-4 .div-2>button.active {
+    background: rgba(30, 215, 96, 0.8);
+    transition: 0.5s;
+}
+
+.section-4 .div-2>button.active:hover {
+    transition: 0.5s;
+    background: rgba(30, 215, 96, 1);
+}
+
+.section-4 .div-2 button>img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+
+/* ---------------------------------------------------------- */
+div.download-confirm-modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity ease-in 0.3s;
+}
+
+div.download-confirm-modal-overlay.active2 {
+    pointer-events: all;
+    opacity: 1;
+    transition: opacity ease-in 0.3s;
+}
+
+div.download-confirm-modal-overlay div.download-confirm-modal {
+    position: relative;
+    background: rgb(253, 253, 253);
+    width: 19%;
+    height: 160px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12), 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
+    z-index: 11;
+    transform: translateY(600px);
+    transition: transform ease-in 0.3s;
+}
+
+div.download-confirm-modal-overlay.active2 div.download-confirm-modal {
+    transform: translateY(-60px);
+    transition: transform ease-out 0.3s;
+}
+
+div.download-confirm-modal-overlay div.download-confirm-modal.active {
+    background: rgb(13, 17, 23);
+}
+
+div.download-confirm-modal>p {
+    cursor: default;
+}
+
+div.download-confirm-modal.active>p {
+    color: #fff;
+}
+
+div.download-confirm-modal div.dn-cnf-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 58%;
+}
+
+div.download-confirm-modal div.dn-cnf-btn-container>button {
+    width: 54px;
+    height: 32px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+div.download-confirm-modal div.dn-cnf-btn-container>button#dn-cnf-yes-btn {
+    background: rgb(46, 160, 67);
+}
+
+div.download-confirm-modal div.dn-cnf-btn-container>button#dn-cnf-no-btn {
+    background: rgb(218, 54, 51);
+}
+
+div.download-confirm-modal div.dn-cnf-btn-container>button:hover {
+    opacity: 0.8;
+    transition: 0.5s;
+}
+
+
+
+
+/* ---------------------------------------------------------- */
+div.iframe-overlay-div {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(211, 211, 211, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 150px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity ease-in 0.3s;
+}
+
+div.iframe-overlay-div.active2 {
+    pointer-events: all;
+    opacity: 1;
+    transition: opacity ease-in 0.3s;
+}
+
+div.iframe-overlay-div div.iframe-modal-div {
+    position: relative;
+    width: 42%;
+    background: rgb(126, 91, 192);
+    border-radius: 16px;
+    z-index: 11;
+    transform: translateX(650px);
+    transition: transform ease-in 0.3s;
+}
+
+div.iframe-overlay-div.active2 div.iframe-modal-div {
+    transform: translateX(0px);
+    transition: transform ease-in 0.3s;
+}
+
+div.iframe-modal-div>iframe {
+    width: 500px;
+    height: 500px;
+}
+
+div.iframe-modal-div>button {
+    float: right;
+    margin: 10px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 4px;
+    background: rgb(126, 91, 192);
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+div.iframe-modal-div>button:hover {
+    background: rgb(103, 58, 183, 0.8);
+}
+
+div.iframe-modal-div>button img {
+    width: 18px;
+    height: 18px;
+    filter: invert(1);
+}
+
+
+/* ---------------------------------------------------------- */
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+
+footer .feedback-section {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    right: -60px;
+    bottom: -24px;
+    transform: rotate(-45deg);
+    background: rgba(46, 46, 46, 1);
+    width: 150px;
+    height: 80px;
+    padding-top: 9px;
+    font-size: small;
+    transition: 0.5s;
+}
+
+footer .feedback-section a {
+    text-decoration: none;
+    color: #fff !important;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+footer .feedback-section a:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------------------------------------------------------- */
+.bg-svg-container {
+    position: absolute;
+    background-image: url("../images/bg-3.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 60vh;
+    height: 60vh;
+    right: 180px;
+    top: 180px;
+    opacity: 0.5;
+}
+
+.eyes {
+    position: absolute;
+    top: 30%;
+    right: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 11%;
+}
+
+.eyes .eye {
+    position: relative;
+    width: 16px;
+    height: 16px;
+}
+
+.eyes .eye i {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.eyes .eye i::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #111;
+    box-shadow: 0px 0px 0px 1.5px #3d5d89;
+    transform: translate(-5px, 0.5px);
+}
+
+.mouth {
+    position: absolute;
+    top: 33.5%;
+    right: 38%;
+    width: 5%;
+    height: 8px;
+    background: transparent;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    box-shadow: 0 1px 0px rgb(47, 46, 65);
+}
+
+.mouth:hover {
+    top: 34.5%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    box-shadow: 0 -1px 0px rgb(47, 46, 65);
+}
+
+
+/* ---------------------------------------------------------- */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(211, 211, 211, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity ease-in 0.3s;
+    pointer-events: none;
+}
+
+.modal-backdrop.active2 {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px dashed #5f6368;
+    border-radius: 25px;
+    color: white;
+    background: #2b2b2b;
+    box-shadow: 0px 8px 17px 2px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 36%;
+    height: 280px;
+    z-index: 11;
+    transform: translateY(-180%);
+    transition: transform ease-in .3s;
+}
+
+.modal-container.active {
+    transform: translateY(0%);
+}
+
+.modal-container #cancel-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    color: white;
+    background: rgb(232, 17, 35);
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-container #cancel-modal-btn:active {
+    background: rgb(180, 13, 27);
+}
+
+.modal-container #cancel-modal-btn img {
+    width: 15px;
+    height: 15px;
+    /* filter: invert(1); */
+}
+
+.modal-container .share-btns-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container .share-btns-container div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.modal-container .share-btns-container div button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px;
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.modal-container .share-btns-container div button img {
+    width: 30px;
+    height: 30px;
+}
+
+#twitter-share-btn {
+    background: rgb(16, 16, 16);
+}
+
+#twitter-share-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+#facebook-share-btn {
+    background: rgb(24, 119, 242);
+}
+
+#instagram-share-btn img {
+    width: 114%;
+    height: 114%;
+}
+
+#whatsapp-share-btn {
+    background: rgb(42, 212, 106);
+}
+
+#email-share-btn {
+    background: #fff;
+}
+
+#copy-link-btn {
+    background: transparent;
+    border: 2px dashed #757575;
+}
+
+
+/* ----------------------------------------------------------- */
+.req {
+    color: red;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    margin-top: 5px;
+    visibility: hidden;
+    transition: 0.5s;
+}

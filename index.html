@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" type="text/css" />
+    <link rel="icon" href="images/tab-icon-3.svg" type="image/icon" />
+    <title>voiceNote: Free Note Taking App for Every Individual</title>
+</head>
+
+
+
+<body>
+    <header>
+        <div id="alertBox" class="alertBox"></div>
+
+        <div class="header" id="header">
+            <div class="heading-container" id="heading-container">
+                <img src="images/voiceNote-logo1.svg" alt="logo" />
+            </div>
+
+            <div class="light-and-dark-mode-container">
+                <div id="mode-icon"></div>
+                <div id="toggle">
+                    <i class="indicator"></i>
+                </div>
+            </div>
+
+            <div class="share-btn-container">
+                <button id="shareBtn">
+                    Share
+                    <img id="shareBtn-icon" draggable="false" src="images/share-icon.svg" alt="" />
+                </button>
+            </div>
+        </div>
+        <div class="main" id="main">
+            <!-- draggable button -->
+            <!-- This feature is in testing phase. -->
+            <button id="draggable-btn"></button>
+
+            <div id="content" class="content">
+                <div class="section-1">
+                    <select name="language" id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                    <span id="speechButtons" class="speechButtons">
+                        <button id="speech-speakBtn">
+                            <img draggable="false" src="images/speak.svg" alt="" />
+                        </button>
+                        <button id="speech-pauseBtn">
+                            <img draggable="false" src="images/pause.svg" alt="" />
+                        </button>
+                        <button id="speech-playBtn">
+                            <img draggable="false" src="images/play.svg" alt="" />
+                        </button>
+                        <button id="speech-stopBtn">
+                            <img draggable="false" src="images/stop.svg" alt="" />
+                        </button>
+                    </span>
+                </div>
+                <span id="req1" class="req">*</span>
+                <div class="section-2" id="section-2">
+                    <img id="textCopyBtn" src="images/copy-icon.svg" draggable="false" alt="copy" />
+                    <p id="placeholder_p">Tap to Speak..</p>
+                    <textarea id="textrea" cols="30" rows="10" draggable="false"></textarea>
+                </div>
+
+                <div class="section-3" id="section-3">
+                    <button id="rec-startBtn">
+                        <img src="images/mic.svg" alt="listen" />
+                    </button>
+                    <button id="rec-stopBtn" title="stop">
+                        <img src="images/stop-3.svg" alt="Stop" />
+                    </button>
+                </div>
+
+                <div class="section-4">
+                    <span id="req2" class="req">*</span>
+                    <div class="div-1" id="div-1">
+                        <div id="inp-div">
+                            <input type="text" placeholder="File Name" id="fileNameInp" />
+                        </div>
+
+                        <div id="select-div">
+                            <select id="fileExtensionOptions">
+                                <option value="text/plain">Text File (.txt)</option>
+                                <option value="application/msword">Doc File (.doc)</option>
+                                <!-- <option value="">PDF File (.pdf)</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="div-2" id="div-2">
+                        <button id="downloadBtn">
+                            <img src="images/download-2.svg" alt="" draggable="false" />
+                            <span id="as-text-file-span">As Text File</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- download confirm modal: -->
+        <div class="download-confirm-modal-overlay" id="download-confirm-modal-overlay">
+            <div class="download-confirm-modal" id="download-confirm-modal">
+                <p>Confirm a download?</p>
+                <div class="dn-cnf-btn-container">
+                    <button id="dn-cnf-yes-btn">Yes</button>
+                    <button id="dn-cnf-no-btn">No</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-backdrop" id="modal-backdrop">
+            <div class="modal-container" id="modal-container">
+                <button id="cancel-modal-btn">
+                    <img src="images/close-icon.svg" alt="" draggable="false" />
+                </button>
+
+                <p style="
+              width: 10%;
+              border-bottom: 2px solid #4086f4;
+              text-align: center;
+            ">
+                    Share
+                </p>
+
+                <div class="share-btns-container">
+                    <div id="row-1">
+                        <button id="twitter-share-btn" title="Twitter">
+                            <img id="twitter-img" src="images/twitter.png" alt="" draggable="false" />
+                        </button>
+                        <button id="facebook-share-btn" title="Facebook">
+                            <img id="facebook-img" src="images/facebook.png" alt="" drasggable="false" />
+                        </button>
+                        <button id="instagram-share-btn" title="Instagram">
+                            <img id="instagram-img" src="images/instagram.png" alt="" draggable="false" />
+                        </button>
+                    </div>
+                    <div id="row-2">
+                        <button id="whatsapp-share-btn" title="Whatsapp">
+                            <img id="whatsapp-img" src="images/whatsapp.png" alt="" draggable="false" />
+                        </button>
+                        <button id="email-share-btn" title="Gmail">
+                            <img id="email-img" src="images/gmail.png" alt="" draggable="false" />
+                        </button>
+                        <button id="copy-link-btn" title="Copy Link">
+                            <img id="copy-img" src="images/copy-icon.svg" alt="" draggable="false" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="bg-svg-container">
+        <div class="eyes">
+            <span class="eye"><i></i></span>
+            <span class="eye"><i></i></span>
+        </div>
+        <div class="mouth"></div>
+    </div>
+
+    <div class="iframe-overlay-div" id="iframe-overlay-div">
+        <div class="iframe-modal-div">
+            <button id="feedback-close-btn" title="close">
+                <img src="images/close-icon.svg" alt="" draggable="false" />
+            </button>
+            <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSed3DNsZami2m1Ed4X97nnH3tyBgEW9sZbtGsSgL1_UFz4dPA/viewform?embedded=true"
+                frameborder="0" marginheight="0" marginwidth="0" id="ifr">Loading…</iframe>
+        </div>
+    </div>
+
+    <footer>
+        <div class="feedback-section" id="feedback-section">
+            <a id="feedback-open-btn">Feedback</a>
+        </div>
+    </footer>
+
+    <script src="scripts/index.js"></script>
+</body>
+
+</html>
